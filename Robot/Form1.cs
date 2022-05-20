@@ -56,8 +56,7 @@ namespace Robot
                 ComboCamera.Items.Add(filterInfor.Name);
 
             ComboCamera.SelectedIndex = 0;
-            /*Bitmap bm = (Bitmap)TestAlgorithm.Image;
-            rectangle[] rec = FindHoles(bm);*/
+            
 
             videoCaptureDevice = new VideoCaptureDevice();
         }
@@ -67,11 +66,10 @@ namespace Robot
         {
 
     
-            //Image = ResizeImage(Image, new Size((int)(0.125f * Image.Width), (int)(0.125f * Image.Height)));
+            
             Bitmap Image2 = Image;
 
-            /*GaussianBlur filterjoe = new GaussianBlur(4, 11);
-            filterjoe.ApplyInPlace(Image);*/
+            
 
 
             Grayscale filter0 = new Grayscale(0.2125, 0.7154, 0.0721);
@@ -81,31 +79,9 @@ namespace Robot
             Image = filter1.Apply(Image);
 
 
-            /*CannyEdgeDetector filter = new CannyEdgeDetector();
-            Image2 = filter.Apply(Image);
-
-            //Image2 = Image;
-
-            SusanCornersDetector scd = new SusanCornersDetector();
-
-            List<IntPoint> corners = scd.ProcessImage(Image2);
-
-            Bitmap newImage = new Bitmap(Image.Width, Image.Height);
-
-            foreach (IntPoint corner in corners) {
-                int x = corner.X;
-                int y = corner.Y;
-
-
-
-                newImage.SetPixel(x, y, Color.Red);
-            }*/
-
-            //TestOutput.Text = (Image.Height * Image.Width).ToString();
 
             int Count = 0;
 
-            //StreamWriter sw = new StreamWriter("C:\\Users\\ACER\\Desktop\\Hello.txt");
 
             bool[,] check = new bool[Image.Width, Image.Height];
             bool[,] visited = new bool[Image.Width, Image.Height];
@@ -130,7 +106,6 @@ namespace Robot
 
             }
 
-            //s = Image.GetPixel(1, 1).R.ToString();
 
             int[,] group = new int[Image.Width, Image.Height];
 
@@ -212,8 +187,6 @@ namespace Robot
 
             }
 
-            //s += '\n';
-            //s += Image.Width.ToString() + " " + Image.Height.ToString() + "\n";
             Bitmap bm = new Bitmap(Image.Width, Image.Height);
 
             rectangle[] rec = new rectangle[Count+1];
@@ -311,27 +284,6 @@ namespace Robot
 
             Image = ResizeImage(Image, new Size((int)(0.125f * Image.Width), (int)(0.125f * Image.Height)));
 
-            /*for (int x = 0; x < Image.Width; x++)
-            {
-                for (int y = 0; y < Image.Height; y++)
-                {
-                    Color oc = Image.GetPixel(x, y);
-
-                    int grayScale = (int)((oc.R * 0.3) + (oc.G * 0.59) + (oc.B * 0.11));
-                    Color nc = Color.FromArgb(oc.A, grayScale, grayScale, grayScale);
-
-                    Image.SetPixel(x, y, nc); // Now greyscale
-                }
-            }*/
-
-            /*Grayscale filter0 = new Grayscale(0.2125, 0.7154, 0.0721);
-            Image = filter0.Apply(Image);
-
-            CannyEdgeDetector filter = new CannyEdgeDetector();
-            Image2 = filter.Apply(Image);*/
-
-            /*Bitmap bm = (Bitmap)TestAlgorithm.Image;
-            rectangle[] rec = FindHoles(bm);*/
             WebCam.Image = Image;
         }
 
@@ -361,7 +313,6 @@ namespace Robot
         int last = 0;
         public void Display()
         {
-            // D:\PTNK\Project\VineRobot\Robot\Robot\Resources
             string s = Environment.CurrentDirectory;
             for (char i = '0'; i<='3'; ++i)
             {
